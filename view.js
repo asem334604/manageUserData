@@ -85,6 +85,15 @@ class RenderHtmlActive {
                      </h3>
                 </div>`
                 }
+                case ('posts'): {
+                    return `<div class="card">
+                    <h2>${obj.constructor.name}</h2>
+                    <h3>User Id: ${obj.userId}</h3>
+                    <h3>Id: ${obj.id}</h3>
+                    <h3>Title: ${obj.title}</h3>
+                    <h3>Post: ${obj.body}</h3>
+                 </div>`
+                }
                 case ('comments'): {
                     return `<div class="card">
                     <h2>${obj.constructor.name}</h2>

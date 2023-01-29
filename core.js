@@ -24,6 +24,15 @@ class Users {
     }
 }
 
+class Posts {
+    constructor(post) {
+        this.userId = post.userId;
+        this.id = post.id;
+        this.title = post.title;
+        this.body = post.body;
+    }
+}
+
 class Comments {
     constructor(comment) {
         this.postId = comment.postId;
@@ -66,11 +75,11 @@ class ManageServerData {
     }
 
     getByDataType(type) {
-        let allOfTypeUrl = this.baseUrl+type.toLowerCase()+'/';
+        let allOfTypeUrl = this.baseUrl + type.toLowerCase() + '/';
         $.ajax(allOfTypeUrl, {
             method: 'GET',
             success: (jsonList) => {
-                RenderHtmlActive.renderServerData(type,jsonList);
+                RenderHtmlActive.renderServerData(type, jsonList);
             },
             error: (err) => {
                 $('#content').html(err);
