@@ -48,10 +48,10 @@ class RenderHtmlActive {
         }
     }
 
-    static renderServerData(data) {
+    static renderServerData(dataType, data) {
         // HTML wrapper for array element
+        console.log(data)
         function cardHtmlWrap(obj) {
-            let dataType = obj.constructor.name.toLowerCase();
             switch (dataType) {
                 case ('users'): {
                     return `<div class="card">
@@ -123,7 +123,7 @@ class RenderHtmlActive {
                 }
             }
         }
-        return data.map(cardHtmlWrap).join('');
+        content.innerHTML= data.map(cardHtmlWrap).join('');
     }
 
     static handleAddForm(e){

@@ -3,9 +3,18 @@ const sideList = document.getElementById('side_list');
 const addForm = document.querySelector('#addProduct form');
 
 // create store instance
-const store = new Store();
+const server = new ManageServerData();
+
 
 // top menu tabs active/inactive
+
+// $('#top-nav').on('click', 'li',function () {
+//     if ($(this).attr('id','productsLink'))
+//         RenderHtmlStatic.displayProductsTopNav();
+//     else if ($(this).attr('id','productsLink'))
+//         RenderHtmlStatic.displayAddProductTopNav();
+// })
+
 document.getElementById('top-nav')
     .addEventListener('click', (e) => {
         const topNavId = e.target.getAttribute('id');
@@ -16,6 +25,11 @@ document.getElementById('top-nav')
     })
 
 // render form inputs according to product type
+
+// $('#type').on('change', function () {
+//     RenderHtmlActive.renderFormInputs($(this).val());
+// })
+
 document.getElementById('type').addEventListener('change', e => {
     RenderHtmlActive.renderFormInputs(e.target.value)
 })
@@ -26,45 +40,32 @@ addForm.addEventListener('submit',RenderHtmlActive.handleAddForm);
 // products side tabs
 sideList.addEventListener('click', e => {
     let outputType = e.target.dataset.name;
-    if (outputType === 'all') {
-        content.innerHTML = RenderHtmlActive.renderProducts(store.getAll());
-        RenderHtmlStatic.showSideTabAsActive('all');
-    } else if (outputType === 'milk') {
-        content.innerHTML = RenderHtmlActive.renderProducts(store.getByType('milk'));
-        RenderHtmlStatic.showSideTabAsActive('milk');
-    } else if (outputType === 'chocolate') {
-        content.innerHTML = RenderHtmlActive.renderProducts(store.getByType('chocolate'));
-        RenderHtmlStatic.showSideTabAsActive('chocolate');
-    } else if (outputType === 'wine'){
-        content.innerHTML = RenderHtmlActive.renderProducts(store.getByType('wine'));
-        RenderHtmlStatic.showSideTabAsActive('wine');
+    if (outputType === 'users') {
+        server.getByDataType('users')
+        RenderHtmlStatic.showSideTabAsActive('users');
+    } else if (outputType === 'posts') {
+        server.getByDataType('posts')
+        RenderHtmlStatic.showSideTabAsActive('posts');
+    } else if (outputType === 'comments') {
+        server.getByDataType('comments')
+        RenderHtmlStatic.showSideTabAsActive('comments');
+    } else if (outputType === 'albums'){
+        server.getByDataType('albums')
+        RenderHtmlStatic.showSideTabAsActive('albums');
+    } else if (outputType === 'photos'){
+        server.getByDataType('photos')
+        RenderHtmlStatic.showSideTabAsActive('photos');
+    } else if (outputType === 'todos'){
+        server.getByDataType('todos')
+        RenderHtmlStatic.showSideTabAsActive('todos');
     }
 })
 
 // load all products at the beginning
 document.addEventListener('DOMContentLoaded', e => {
-    content.innerHTML = RenderHtmlActive.renderProducts(store.getAll());
+    server.getByDataType('users')
 })
 
-const milk1 = new Milk('12345', 'Tnuva Milk', 'Tnuva Inc', 5.60, 3);
-const milk2 = new Milk('12346', 'Tara Milk', 'Tara Inc', 5.90, 5);
-const milk3 = new Milk('12345', 'Yotvata Milk', 'Yotvata Inc', 6.20, 1);
-const chocolate1 = new Chocolate('123535', 'Elit Chocolate', 'Elit Inc', 5.20, 'black');
-const chocolate2 = new Chocolate('1213345', 'Milka Chocolate', 'Milka Inc', 7.20, 'white');
-const chocolate3 = new Chocolate('1246345', 'Snickers Chocolate', 'Snickers Inc', 5.20, 'with peanuts');
-const wine1 = new Wine('12546345', 'Yardeni wine', 'Yardeni Winery', 40.20, 11);
-const wine2 = new Wine('122342345', 'Yekev wine', 'Yekev Winery', 55.60, 10.5);
-const wine3 = new Wine('1246345', 'Golan wine', 'Golan Winery', 50.10, 10.5);
 
-
-store.add(milk1);
-store.add(milk2);
-store.add(milk3);
-store.add(chocolate1);
-store.add(chocolate2);
-store.add(chocolate3);
-store.add(wine1);
-store.add(wine2);
-store.add(wine3);
 
 

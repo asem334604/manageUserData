@@ -70,7 +70,7 @@ class ManageServerData {
         $.ajax(allOfTypeUrl, {
             method: 'GET',
             success: (jsonList) => {
-                return jsonList;
+                RenderHtmlActive.renderServerData(type,jsonList);
             },
             error: (err) => {
                 $('#content').html(err);
