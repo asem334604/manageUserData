@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script defer src="util.js"></script>
+    <script defer src="view.js"></script>
+    <script defer src="core.js"></script>
+    <script defer src="app.js"></script>
+    <link href="style.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="nav" id="top-nav">
+        <ul>
+            <li class="active" id="productsLink">Products</li>
+            <li id="addLink">Add product</li>
+            <input name='search' placeholder="search" type="text">
+        </ul>
+    </div>
+    <div id="section">
+        <div id="showProducts">
+            <div class="side-nav" >
+                <ul id="side_list">
+                    <li data-name="users" class="active">Users</li>
+                    <li data-name="posts">Posts</li>
+                    <li data-name="comments">Comments</li>
+                    <li data-name="albums">Albums</li>
+                    <li data-name="photos">Photos</li>
+                    <li data-name="todos">Todos</li>
+                </ul>
+            </div>
+            <div class="content" id="content">
+
+            </div>
+        </div>
+        <div class="hide" id="addProduct">
+            <form action="#">
+                <select class="form-control" id="type" name="type">
+                    <option value="milk">Milk</option>
+                    <option value="chocolate">Chocolate</option>
+                    <option value="wine">Wine</option>
+                </select>
+                <input class="form-control" name="id" placeholder="Type id"  type="text">
+                <input class="form-control" name="title" placeholder="Type product title"
+                        type="text">
+                <input class="form-control" name="manufacture" placeholder="Type manufacture"
+                        type="text">
+                <input class="form-control" name="price" placeholder="Type price"
+                        step="0.01" type="number">
+                <div id="optional_inputs">
+                    <input class="form-control" name="fat" placeholder="Type fat" type="number">
+                </div>
+                <button>add</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+        crossorigin="anonymous">
+</script>
+
+</body>
+</html>
